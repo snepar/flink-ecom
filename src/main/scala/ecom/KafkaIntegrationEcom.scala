@@ -215,11 +215,12 @@ object KafkaIntegrationEcom {
     val transactionStream = readCustomData()
     transactionStream.print()
 
-    //writeToDB(transactionStream)
-    //writeToDBsalesPerCategory(transactionStream)
-    //writeToDBsalesPerDay(transactionStream)
-    //writeToDBsalesPerMonth(transactionStream)
+    writeToDB(transactionStream)
+    writeToDBsalesPerCategory(transactionStream)
+    writeToDBsalesPerDay(transactionStream)
+    writeToDBsalesPerMonth(transactionStream)
     writeToElastic(transactionStream)
+    
     env.execute()
 
   }
