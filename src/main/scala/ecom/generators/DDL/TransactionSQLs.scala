@@ -1,4 +1,4 @@
-package generators.DDL
+package ecom.generators.DDL
 
 object TransactionSQLs {
   val createTable = "CREATE TABLE IF NOT EXISTS transactions (" +

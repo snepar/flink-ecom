@@ -1,4 +1,4 @@
-package generators.DDL
+package ecom.generators.DDL
 
 object SalesPerMonthSQL {
   val createTable = "CREATE TABLE IF NOT EXISTS sales_per_month (" +

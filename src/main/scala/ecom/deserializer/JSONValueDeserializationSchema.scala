@@ -1,11 +1,11 @@
-package deserializer
+package ecom.deserializer
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.json.JsonMapper
-import generators.Dto.Transaction
 import org.apache.flink.api.common.serialization.DeserializationSchema
 import org.apache.flink.api.common.typeinfo.TypeInformation
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
+import ecom.generators.Dto.Transaction
 
 class JSONValueDeserializationSchema extends DeserializationSchema[Transaction] with Serializable {
 

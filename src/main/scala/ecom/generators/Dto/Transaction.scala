@@ -1,4 +1,4 @@
-package generators.Dto
+package ecom.generators.Dto
 
 case class Transaction(
                         transactionId: String,

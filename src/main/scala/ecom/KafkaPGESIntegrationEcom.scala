@@ -2,7 +2,6 @@ package ecom
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
-import deserializer.JSONValueDeserializationSchema
 import generators.Dto.{SalesPerCategory, SalesPerDay, SalesPerMonth, Transaction}
 import generators.DDL
 import org.apache.flink.api.common.eventtime.WatermarkStrategy
@@ -18,7 +17,7 @@ import org.apache.flink.streaming.api.scala._
 
 import java.sql.{Date, PreparedStatement}
 
-object KafkaIntegrationEcom {
+object KafkaPGESIntegrationEcom {
   val env = StreamExecutionEnvironment.getExecutionEnvironment
 
   val jdbcUrl = "jdbc:postgresql://localhost:5432/postgres"
