@@ -36,3 +36,7 @@ This repository contains an Apache Flink application for real-time sales analyti
 - `KafkaPGESIntegrationEcom.scala`: Contains the Flink application logic, including Kafka source setup, stream processing, transformations, and sinks for Postgres and Elasticsearch.
 - `deserializer`, `generators.Dto`, and `generators.DDL` : Include necessary classes and utilities for deserialization, data transfer objects, JSON conversion and SQL.
 
+## Execution
+
+- `KafkaPGESIntegrationEcom.scala` : Can be directly run from the IDE
+- Install a flink cluster and deploy using `$flink run -c ecom.KafkaPGESIntegrationEcom flink-ecom_2.12-0.1.jar`
