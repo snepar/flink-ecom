@@ -10,11 +10,11 @@ import org.apache.flink.connector.elasticsearch.sink.{Elasticsearch7SinkBuilder,
 import org.apache.flink.connector.jdbc.{JdbcConnectionOptions, JdbcExecutionOptions, JdbcSink, JdbcStatementBuilder}
 import org.apache.flink.connector.kafka.source.KafkaSource
 import org.apache.flink.connector.kafka.source.enumerator.initializer.OffsetsInitializer
-import org.apache.flink.elasticsearch7.shaded.org.apache.http.HttpHost
-import org.apache.flink.elasticsearch7.shaded.org.elasticsearch.action.index.IndexRequest
-import org.apache.flink.elasticsearch7.shaded.org.elasticsearch.client.Requests
-import org.apache.flink.elasticsearch7.shaded.org.elasticsearch.common.xcontent.XContentType
 import org.apache.flink.streaming.api.scala._
+import org.apache.http.HttpHost
+import org.elasticsearch.action.index.IndexRequest
+import org.elasticsearch.client.Requests
+import org.elasticsearch.common.xcontent.XContentType
 
 import java.sql.{Date, PreparedStatement}
 
@@ -194,6 +194,8 @@ object KafkaPGESIntegrationEcom {
 
     val sink: ElasticsearchSink[Transaction] = new Elasticsearch7SinkBuilder[Transaction]
       .setHosts(new HttpHost("localhost", 9200, "http"))
+      .setBulkFlushMaxActions(2)
+      .setBulkFlushInterval(10L)
       .setEmitter[Transaction]{
         (transaction, context, indexer) => {
           val mapper = new ObjectMapper()

@@ -17,9 +17,8 @@ val flinkDependencies = Seq(
 val flinkConnectors = Seq(
   "org.apache.flink" % "flink-connector-kafka" % "1.16.3",
   "org.apache.flink" % "flink-connector-jdbc" % "1.16.3",
-  "org.apache.flink" % "flink-sql-connector-elasticsearch7" % "1.16.3",
-  "org.elasticsearch" % "elasticsearch" % "7.17.0",
-"org.postgresql" % "postgresql" % postgresVersion,
+  "org.apache.flink" % "flink-connector-elasticsearch7" % "1.16.3",
+  "org.postgresql" % "postgresql" % postgresVersion,
   "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.17.1"
 )
 

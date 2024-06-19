@@ -40,3 +40,41 @@ This repository contains an Apache Flink application for real-time sales analyti
 
 - `KafkaPGESIntegrationEcom.scala` : Can be directly run from the IDE
 - Install a flink cluster and deploy using `$flink run -c ecom.KafkaPGESIntegrationEcom flink-ecom_2.12-0.1.jar`
+
+## Query Postgres Tables
+
+- transactions
+- sales_per_category
+- sales_per_month
+- sales_per_day
+
+## Reindex Elastic
+
+```
+POST _reindex
+{
+ "source": {"index": "transactions"}, 
+ "dest": {"index": "transaction_part1"},
+ "script": {"source":"""
+   ctx._source.transactionDate = new 
+   Date(ctx._source.transactionDate).toString();
+"""}
+}
+
+GET reindex/_search
+```
+```
+POST _reindex
+{
+"source": {"index": "transactions"}, 
+"dest": {"index": "transaction_part2"},
+"script": {"source": 
+ """SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+  formatter.setTimeZone(TimeZone.getTimeZone('UTC'));
+  ctx._source.transactionDate = formatter.format (new 
+  Date(ctx._source.transactionDate));"""
+ }
+}
+
+GET transaction_part2/_search 
+```
