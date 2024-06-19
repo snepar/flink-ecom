@@ -2,6 +2,7 @@ package ecom
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
+import ecom.deserializer.JSONValueDeserializationSchema
 import generators.Dto.{SalesPerCategory, SalesPerDay, SalesPerMonth, Transaction}
 import generators.DDL
 import org.apache.flink.api.common.eventtime.WatermarkStrategy
